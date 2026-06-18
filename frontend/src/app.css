@@ -1,0 +1,96 @@
+/* ===== Lunara Design System ===== */
+
+/* CSS Custom Properties */
+:root {
+  /* Colors — Dark theme by default */
+  --color-primary: #6c5ce7;
+  --color-primary-light: #a29bfe;
+  --color-primary-dark: #5a4bd1;
+
+  --color-background: #0f0f14;
+  --color-surface: #1a1a24;
+  --color-surface-elevated: #242432;
+
+  --color-text-primary: #f0f0f5;
+  --color-text-secondary: #8e8ea0;
+
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  --color-success: #55efc4;
+  --color-error: #e74c3c;
+  --color-warning: #fdcb6e;
+
+  /* Typography */
+  --font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Spacing */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-full: 9999px;
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.3);
+}
+
+/* Light theme support */
+@media (prefers-color-scheme: light) {
+  :root {
+    --color-background: #f5f5fa;
+    --color-surface: #ffffff;
+    --color-surface-elevated: #f0f0f5;
+
+    --color-text-primary: #1a1a2e;
+    --color-text-secondary: #6b6b80;
+
+    --color-border: rgba(0, 0, 0, 0.08);
+
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.06);
+    --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.08);
+    --shadow-lg: 0 25px 60px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* ===== Reset & Base ===== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--font-family);
+  background: var(--color-background);
+  color: var(--color-text-primary);
+  line-height: 1.6;
+  min-height: 100vh;
+}
+
+/* Remove default focus outlines and add custom ones */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Selection color */
+::selection {
+  background: rgba(108, 92, 231, 0.3);
+  color: var(--color-text-primary);
+}
