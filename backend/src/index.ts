@@ -11,9 +11,18 @@ const app = express();
 // --- Middleware ---
 app.use(
   cors({
-    origin: config.FRONTEND_URL,
-    methods: ["GET", "POST"],
-    allowedHeaders: ["Content-Type"],
+    origin: (origin, callback) => {
+      const allowedOrigins = config.FRONTEND_URL.split(',').map(url => url.trim());
+      // Allow requests with no origin (like mobile apps or curl requests)
+      // or if the origin is in our allowed list
+      if (!origin || allowedOrigins.includes(origin) || allowedOrigins.includes('*')) {
+        callback(null, true);
+      } else {
+        callback(new Error('Not allowed by CORS'));
+      }
+    },
+    methods: ["GET", "POST", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 app.use(express.json({ limit: "10kb" })); // Limit request body size
